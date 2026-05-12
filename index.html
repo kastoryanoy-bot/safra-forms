@@ -29,9 +29,11 @@ body{padding:0 0 60px}
 @media(max-width:520px){.cols2,.cols3{grid-template-columns:1fr}}
 .field{display:flex;flex-direction:column;gap:5px}
 .field label{font-size:12px;font-weight:500;color:var(--muted)}
-input[type=text],input[type=email],input[type=tel],input[type=date],textarea{font-family:'Heebo',sans-serif;font-size:14px;padding:9px 11px;border:1px solid var(--border);border-radius:7px;background:#fff;color:var(--text);direction:rtl;transition:border 0.2s;width:100%}
+input[type=text],input[type=email],input[type=tel],input[type=date],input[type=time],textarea{font-family:'Heebo',sans-serif;font-size:14px;padding:9px 11px;border:1px solid var(--border);border-radius:7px;background:#fff;color:var(--text);direction:rtl;transition:border 0.2s;width:100%}
 input:focus,textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(184,149,42,0.12)}
 textarea{resize:vertical;min-height:80px}
+.auto-box{background:rgba(184,149,42,0.08);border:1px solid var(--gold-light);border-radius:7px;padding:9px 11px;font-size:14px;color:var(--navy);font-family:'Frank Ruhl Libre',serif;min-height:40px;display:flex;align-items:center}
+.hint{font-size:11px;color:var(--muted);margin-top:3px}
 .radio-group{display:flex;gap:18px;flex-wrap:wrap;padding:6px 0}
 .radio-group label,.check-group label{font-size:13px;color:var(--text);display:flex;align-items:center;gap:7px;cursor:pointer;font-weight:400}
 .radio-group input[type=radio],.check-group input[type=checkbox]{width:auto;accent-color:var(--gold)}
@@ -52,28 +54,8 @@ textarea{resize:vertical;min-height:80px}
 .bank-row span:first-child{color:var(--muted)}
 .bank-row span:last-child{font-weight:500;color:var(--navy)}
 .commit-box{background:#fffbea;border:1px solid var(--gold-light);border-radius:8px;padding:13px 15px;font-size:13px;line-height:1.9;margin-bottom:14px}
-.shabbat-hero{background:var(--navy);border-radius:8px;padding:16px;margin-bottom:16px;text-align:center}
-.shabbat-hero h2{font-family:'Frank Ruhl Libre',serif;font-size:17px;color:#fff;margin-bottom:4px}
-.shabbat-hero p{font-size:12px;color:rgba(255,255,255,0.6)}
-.rule-block{border:1px solid var(--border);border-radius:8px;margin-bottom:12px;overflow:hidden}
-.rule-block-head{background:rgba(184,149,42,0.09);padding:10px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border)}
-.rule-block-head span{font-weight:500;font-size:13px;color:var(--navy);font-family:'Frank Ruhl Libre',serif}
-.tag{margin-right:auto;font-size:11px;padding:2px 9px;border-radius:10px;font-weight:500}
-.tag-red{background:#fde8e8;color:#9b2c2c}.tag-blue{background:#e8f0fd;color:#1a3a6e}
-.rules-list{padding:10px 14px}
-.rule-item{display:flex;gap:10px;padding:7px 0;border-bottom:1px solid rgba(212,200,154,0.35);font-size:13px;line-height:1.65;align-items:flex-start}
-.rule-item:last-child{border-bottom:none}
-.dot{width:6px;height:6px;border-radius:50%;background:var(--gold);margin-top:7px;flex-shrink:0}
-.rule-title{font-weight:500;color:var(--navy);margin-left:3px}
-.sub-tabs{display:flex;gap:8px;margin-bottom:16px}
-.sub-tab{padding:6px 18px;font-size:13px;font-family:'Heebo',sans-serif;font-weight:500;cursor:pointer;border:1px solid var(--border);border-radius:20px;background:none;color:var(--muted);transition:all 0.2s}
-.sub-tab:hover{border-color:var(--gold);color:var(--navy)}
-.sub-tab.active{background:var(--navy);color:#fff;border-color:var(--navy)}
-.aliyot-table{width:100%;border-collapse:collapse;font-size:13px}
-.aliyot-table th{background:var(--navy);color:#fff;padding:8px 10px;text-align:right;font-weight:500;font-size:12px}
-.aliyot-table td{border:1px solid var(--border);padding:4px}
-.aliyot-table td input{border:none;background:transparent;padding:5px 7px;font-size:13px;width:100%;font-family:'Heebo',sans-serif;direction:rtl}
-.aliyot-table td input:focus{background:rgba(184,149,42,0.07);outline:none;border-radius:3px}
+.sig-wrap{border:1px solid var(--border);border-radius:8px;background:#fff;padding:8px}
+.sig-wrap canvas{width:100%;height:150px;border-radius:6px;touch-action:none;cursor:crosshair;display:block;border:1px dashed var(--border)}
 .btn{font-family:'Heebo',sans-serif;font-size:14px;font-weight:500;padding:11px 26px;border-radius:8px;cursor:pointer;transition:all 0.2s;border:1.5px solid}
 .btn-primary{background:var(--navy);color:#fff;border-color:var(--navy)}
 .btn-primary:hover{background:#243260}
@@ -89,13 +71,29 @@ textarea{resize:vertical;min-height:80px}
 .success-msg p{font-size:14px;color:var(--muted);margin-bottom:20px}
 .spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,0.4);border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite;vertical-align:middle;margin-left:8px}
 @keyframes spin{to{transform:rotate(360deg)}}
+.aliyot-table{width:100%;border-collapse:collapse;font-size:13px}
+.aliyot-table th{background:var(--navy);color:#fff;padding:8px 10px;text-align:right;font-weight:500;font-size:12px}
+.aliyot-table td{border:1px solid var(--border);padding:4px}
+.aliyot-table td input{border:none;background:transparent;padding:5px 7px;font-size:13px;width:100%;font-family:'Heebo',sans-serif;direction:rtl}
+.aliyot-table td input:focus{background:rgba(184,149,42,0.07);outline:none;border-radius:3px}
+.shabbat-hero{background:var(--navy);border-radius:8px;padding:16px;margin-bottom:16px;text-align:center}
+.shabbat-hero h2{font-family:'Frank Ruhl Libre',serif;font-size:17px;color:#fff;margin-bottom:4px}
+.shabbat-hero p{font-size:12px;color:rgba(255,255,255,0.6)}
+.rule-block{border:1px solid var(--border);border-radius:8px;margin-bottom:12px;overflow:hidden}
+.rule-block-head{background:rgba(184,149,42,0.09);padding:10px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border)}
+.rule-block-head span{font-weight:500;font-size:13px;color:var(--navy);font-family:'Frank Ruhl Libre',serif}
+.tag{margin-right:auto;font-size:11px;padding:2px 9px;border-radius:10px;font-weight:500}
+.tag-red{background:#fde8e8;color:#9b2c2c}
+.tag-blue{background:#e8f0fd;color:#1a3a6e}
+.rules-list{padding:10px 14px}
+.rule-item{display:flex;gap:10px;padding:7px 0;border-bottom:1px solid rgba(212,200,154,0.35);font-size:13px;line-height:1.65;align-items:flex-start}
+.rule-item:last-child{border-bottom:none}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--gold);margin-top:7px;flex-shrink:0}
+.rule-title{font-weight:500;color:var(--navy);margin-left:3px}
 .site-footer{text-align:center;margin-top:40px;font-size:12px;color:var(--muted);padding:0 16px}
 </style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
-
-<!-- iframe נסתר לקליטת תשובת הסקריפט ללא ניתוב דף -->
 
 <header class="site-header">
   <h1>קהילת אחוות רעים – בית הכנסת אדמון ספרא</h1>
@@ -117,38 +115,24 @@ textarea{resize:vertical;min-height:80px}
         <div class="section">
           <h3>פרטי האירוע</h3>
           <div class="field-row cols2">
-            <div class="field"><label>תאריך הגשה</label><input type="date" name="תאריך הגשה"/></div>
-            <div class="field"><label>תאריך האירוע *</label><input type="date" name="תאריך האירוע" id="eventDate1" required/></div>
+            <div class="field"><label>תאריך הגשה</label><input type="date" name="תאריך הגשה" id="submitDate"/></div>
+            <div class="field"><label>תאריך האירוע *</label><input type="date" name="תאריך האירוע" id="eventDate" required/></div>
           </div>
           <div class="field-row cols2">
             <div class="field">
-              <label>תאריך עברי (אוטומטי)</label>
-              <div id="hebDateDisplay" style="background:rgba(184,149,42,0.08);border:1px solid var(--gold-light);border-radius:7px;padding:9px 11px;font-size:14px;color:var(--navy);font-family:'Frank Ruhl Libre',serif;min-height:40px;display:flex;align-items:center">—</div>
+              <label>תאריך עברי</label>
+              <div class="auto-box" id="hebDateDisplay">—</div>
+              <input type="hidden" id="hebDateVal" name="תאריך עברי"/>
+              <div class="hint">מחושב אוטומטית</div>
             </div>
             <div class="field">
-              <label>תאריך עברי (עריכה)</label>
-              <input type="text" id="hebDateManual" name="תאריך עברי" placeholder='י"ד בניסן תשפ"ה'/>
+              <label>יום בשבוע</label>
+              <div class="auto-box" id="dayDisplay">—</div>
+              <input type="hidden" id="dayVal" name="יום בשבוע"/>
             </div>
           </div>
           <div class="field-row cols2">
-            <div class="field">
-              <label>תאריך עברי (אוטומטי)</label>
-              <div id="hebrewDateDisplay" style="background:rgba(184,149,42,0.08);border:1px solid var(--gold-light);border-radius:7px;padding:9px 11px;font-size:14px;color:var(--navy);font-family:'Frank Ruhl Libre',serif;min-height:40px;display:flex;align-items:center">—</div>
-              <input type="text" id="hebDateManual" name="תאריך עברי" placeholder='י"ד בניסן תשפ"ה' style="margin-top:4px"/>
-            </div>
-          </div>
-          <div class="field-row cols2">
-            <div class="field">
-              <label>יום בשבוע (אוטומטי)</label>
-              <div id="dayOfWeekDisplay" style="background:rgba(184,149,42,0.08);border:1px solid var(--gold-light);border-radius:7px;padding:9px 11px;font-size:14px;color:var(--navy);font-family:'Frank Ruhl Libre',serif;min-height:40px;display:flex;align-items:center">—</div>
-              <input type="hidden" id="dayOfWeekHidden" name="יום בשבוע"/>
-            </div>
-            <div class="field">
-              <label>שעת האירוע</label>
-              <input type="time" name="שעת האירוע"/>
-            </div>
-          </div>
-          <div class="field-row">
+            <div class="field"><label>שעת האירוע</label><input type="time" name="שעת האירוע"/></div>
             <div class="field"><label>סוג האירוע *</label>
               <div class="radio-group">
                 <label><input type="radio" name="סוג האירוע" value="בר מצווה" required/> בר מצווה</label>
@@ -159,7 +143,7 @@ textarea{resize:vertical;min-height:80px}
             </div>
           </div>
           <div class="field-row cols2">
-            <div class="field"><label>פרשת השבוע / יום בשבוע</label><input type="text" name="פרשת השבוע"/></div>
+            <div class="field"><label>פרשת השבוע</label><input type="text" name="פרשת השבוע"/></div>
             <div class="field"><label>שם הרב המלווה</label><input type="text" name="שם הרב המלווה"/></div>
           </div>
         </div>
@@ -185,7 +169,7 @@ textarea{resize:vertical;min-height:80px}
         </div>
 
         <div class="section">
-          <h3>כיבוד ושירותים</h3>
+          <h3>כיבוד</h3>
           <div class="field-row">
             <div class="field"><label>כיבוד באולם</label>
               <div class="radio-group">
@@ -200,7 +184,11 @@ textarea{resize:vertical;min-height:80px}
         <div class="section">
           <h3>עלויות והתחייבות</h3>
           <table class="cost-table">
-            <thead><tr><th>סעיף</th><th style="text-align:center;width:95px">שימוש באולם</th><th style="text-align:left;width:72px">עלות</th></tr></thead>
+            <thead><tr>
+              <th>סעיף</th>
+              <th style="text-align:center;width:95px">שימוש באולם</th>
+              <th style="text-align:left;width:72px">עלות</th>
+            </tr></thead>
             <tbody>
               <tr><td>תפעול ואחזקה (אירוע בבית הכנסת)</td><td></td><td class="amount">₪1,800</td></tr>
               <tr>
@@ -215,7 +203,10 @@ textarea{resize:vertical;min-height:80px}
             </tbody>
           </table>
           <input type="hidden" name="סכום לתשלום" id="totalHidden" value="5300"/>
-          <div class="info-box"><strong>הערה לשריון התאריך:</strong> יש להעביר מקדמה של <strong>₪500</strong> — סכום זה נכלל בתשלום הכולל ואינו תשלום נוסף.</div>
+
+          <div class="info-box">
+            <strong>הערה לשריון התאריך:</strong> יש להעביר מקדמה של <strong>₪500</strong> — סכום זה נכלל בתשלום הכולל ואינו תשלום נוסף. יתרת התשלום תוסדר עד שבוע לפני מועד האירוע.
+          </div>
           <div class="bank-box">
             <div class="bank-title">פרטי העברה בנקאית</div>
             <div class="bank-row"><span>בנק</span><span>דיסקונט (11)</span></div>
@@ -223,29 +214,32 @@ textarea{resize:vertical;min-height:80px}
             <div class="bank-row"><span>מספר חשבון</span><span>3747</span></div>
             <div class="bank-row"><span>שם החשבון</span><span>עמותת שמחת רחל</span></div>
           </div>
-          <div class="field-row" style="margin-top:14px">
+
+          <div class="field-row" style="margin-top:16px">
             <div class="field">
               <label>חתימה דיגיטלית *</label>
-              <div class="signature-pad-container">
-                <canvas id="signatureCanvas" style="border:1px solid #d4c89a;border-radius:6px;cursor:crosshair;touch-action:none;width:100%;height:150px;display:block"></canvas>
+              <div class="sig-wrap"><canvas id="sigCanvas"></canvas></div>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px">
+                <div class="hint">חתום באצבע (נייד) או בעכבר (מחשב)</div>
+                <button type="button" onclick="clearSig()" style="font-size:12px;color:var(--error);cursor:pointer;background:none;border:1px solid var(--error);border-radius:5px;padding:3px 10px;font-family:Heebo,sans-serif">נקה</button>
               </div>
-              <div style="display:flex;justify-content:flex-end;margin-top:6px">
-                <button type="button" onclick="clearSignature()" style="font-size:12px;color:#c0392b;cursor:pointer;background:none;border:1px solid #c0392b;border-radius:5px;padding:3px 10px;font-family:Heebo,sans-serif">נקה חתימה</button>
-              </div>
-              <div style="font-size:11px;color:var(--muted);margin-top:3px">חתום באצבע (נייד) או בעכבר (מחשב)</div>
-              <input type="hidden" id="signatureData" name="חתימה"/>
+              <input type="hidden" id="sigData" name="חתימה"/>
             </div>
           </div>
-          <div class="field-row" style="margin-top:10px">
+
+          <div class="field-row" style="margin-top:12px">
             <div class="field">
-              <div style="background:#fffbea;border:1px solid var(--gold-light);border-radius:8px;padding:13px;font-size:13px;line-height:1.9;margin-bottom:12px">אני מתחייב/ת לקיים את ההוראות ולהודיע עליהן לכלל האורחים, כולל שמירת שבת, לבוש הולם, איסור מכשירי חשמל בשבת, ושקט במהלך התפילה.</div>
-              <div class="check-group"><label><input type="checkbox" name="אישור התחייבות" value="קראתי ומאשר" required/> קראתי את נהלי השבת ואני מתחייב/ת לפעול לפיהם *</label></div>
+              <div class="commit-box">אני מתחייב/ת לקיים את ההוראות ולהודיע עליהן לכלל האורחים, כולל שמירת שבת, לבוש הולם, איסור מכשירי חשמל בשבת, ושקט במהלך התפילה.</div>
+              <div class="check-group">
+                <label><input type="checkbox" name="אישור התחייבות" value="קראתי ומאשר" required/> קראתי את נהלי השבת ואני מתחייב/ת לפעול לפיהם *</label>
+              </div>
             </div>
           </div>
         </div>
+
         <div class="actions">
-          <button type="reset" class="btn btn-secondary">נקה טופס</button>
-          <button type="submit" class="btn btn-primary">שלח הזמנה והתחייבות ✓</button>
+          <button type="reset" class="btn btn-secondary" onclick="clearSig()">נקה טופס</button>
+          <button type="submit" class="btn btn-primary" id="btn1">שלח הזמנה והתחייבות ✓</button>
         </div>
       </form>
     </div>
@@ -259,25 +253,34 @@ textarea{resize:vertical;min-height:80px}
   </div>
 </div>
 
-<!-- PAGE 2 -->
+<!-- PAGE 2: נהלי שבת -->
 <div id="p2" class="page">
   <div class="card">
-    <div class="shabbat-hero"><h2>נהלי שבת – בית הכנסת אדמון ספרא</h2><p>מזל טוב! בכדי לשמור על אווירה מכבדת ונעימה, אנו מבקשים לפעול לפי ההנחיות הבאות</p></div>
+    <div class="shabbat-hero">
+      <h2>נהלי שבת – בית הכנסת אדמון ספרא</h2>
+      <p>מזל טוב! בכדי לשמור על אווירה מכבדת ונעימה, אנו מבקשים לפעול לפי ההנחיות הבאות</p>
+    </div>
     <div class="rule-block"><div class="rule-block-head"><span>לו"ז ומהות הטקס</span><span class="tag tag-blue">מידע כללי</span></div><div class="rules-list">
       <div class="rule-item"><div class="dot"></div><div><span class="rule-title">הנחת תפילין (יום חול):</span> הטקס מתקיים בימי שני או חמישי שלפני שבת בר מצווה. תפילת שחרית מתחילה בשעה 05:45.</div></div>
+      <div class="rule-item"><div class="dot"></div><div><span class="rule-title">מניין משפחתי:</span> ניתן לערוך בשעה אחרת בתיאום מראש, אך יש לדאוג לחזן ובעל קורא.</div></div>
       <div class="rule-item"><div class="dot"></div><div><span class="rule-title">עלייה לתורה (שבת):</span> תפילת שחרית מתחילה בשעה 08:00.</div></div>
-      <div class="rule-item"><div class="dot"></div><div><span class="rule-title">זריקת סוכריות:</span> מעזרת הנשים בלבד, בארבעה מועדים.</div></div>
+      <div class="rule-item"><div class="dot"></div><div><span class="rule-title">זריקת סוכריות:</span> מעזרת הנשים בלבד, בארבעה מועדים: הולכת ספר התורה, עליית החתן, עליית האב, החזרת ספר התורה להיכל.</div></div>
     </div></div>
     <div class="rule-block"><div class="rule-block-head"><span>הנחיות כלליות</span><span class="tag tag-blue">לכולם</span></div><div class="rules-list">
-      <div class="rule-item"><div class="dot"></div><div><span class="rule-title">כיסוי ראש:</span> גברים וילדים חייבים בחבישת כיפה.</div></div>
-      <div class="rule-item"><div class="dot"></div><div><span class="rule-title">לבוש:</span> נשים מתבקשות להגיע בלבוש צנוע ונשים נשואות בכיסוי ראש.</div></div>
+      <div class="rule-item"><div class="dot"></div><div><span class="rule-title">כיסוי ראש:</span> גברים וילדים חייבים בחבישת כיפה. ניתן לקבל בכניסה.</div></div>
+      <div class="rule-item"><div class="dot"></div><div><span class="rule-title">לבוש:</span> נשים מתבקשות להגיע בלבוש צנוע. נשים נשואות מתבקשות לחבוש כיסוי ראש.</div></div>
       <div class="rule-item"><div class="dot"></div><div><span class="rule-title">שקט:</span> יש להקפיד על שקט מוחלט בעזרת הנשים ובאולם התפילה.</div></div>
     </div></div>
     <div class="rule-block"><div class="rule-block-head"><span>שמירת שבת</span><span class="tag tag-red">הנחיות מחייבות</span></div><div class="rules-list">
-      <div class="rule-item"><div class="dot"></div><div><span class="rule-title">מכשירי חשמל:</span> חל איסור מוחלט על שימוש בטלפונים סלולריים ומצלמות בשטח בית הכנסת.</div></div>
+      <div class="rule-item"><div class="dot"></div><div><span class="rule-title">מכשירי חשמל:</span> חל איסור מוחלט על שימוש בטלפונים סלולריים, מצלמות או מכשירי תקשורת בשטח בית הכנסת.</div></div>
       <div class="rule-item"><div class="dot"></div><div><span class="rule-title">מוקצה:</span> אין להביא עטים, מטריות או אביזרים הכרוכים בחילול שבת.</div></div>
-      <div class="rule-item"><div class="dot"></div><div><span class="rule-title">כיבוד:</span> כל המזון והסוכריות חייבים להגיע לפני כניסת השבת.</div></div>
+      <div class="rule-item"><div class="dot"></div><div><span class="rule-title">כיבוד:</span> כל המזון והסוכריות חייבים להגיע לפני כניסת השבת, בתיאום מראש.</div></div>
       <div class="rule-item"><div class="dot"></div><div><span class="rule-title">הגעה ברכב:</span> אין לחנות בסמיכות למבנה בית הכנסת בשבת.</div></div>
+    </div></div>
+    <div class="rule-block"><div class="rule-block-head"><span>תמורה לבעלי השמחה</span><span class="tag tag-blue">שבת</span></div><div class="rules-list">
+      <div class="rule-item"><div class="dot"></div><div><span class="rule-title">עליות לתורה:</span> 5 עליות (כולל החתן), פתיחת ההיכל, הולכת ספר התורה ורימונים.</div></div>
+      <div class="rule-item"><div class="dot"></div><div><span class="rule-title">שי אישי:</span> חתן בר המצווה יקבל מתנה מטעם הקהילה בסיום הטקס.</div></div>
+      <div class="rule-item"><div class="dot"></div><div><span class="rule-title">תיאום:</span> סדרי התפילה והחזנים יקבעו בתיאום עם ועד בית הכנסת.</div></div>
     </div></div>
     <div style="text-align:center;margin-top:16px;padding-top:16px;border-top:1px solid var(--border)">
       <p style="font-family:'Frank Ruhl Libre',serif;font-size:16px;font-weight:700;color:var(--navy)">בברכת מזל טוב | ועד בית הכנסת</p>
@@ -285,11 +288,11 @@ textarea{resize:vertical;min-height:80px}
   </div>
 </div>
 
+<!-- PAGE 3: עולים לתורה -->
 <div id="p3" class="page">
   <div class="card">
     <div id="form3-wrap">
       <form id="form3" name="עולים-לתורה" method="POST" action="https://formspree.io/f/mvzldjyl" onsubmit="handleSubmit(event,'form3')">
-
         <div class="section">
           <h3>פרטי שבת חתן</h3>
           <div class="field-row cols2">
@@ -301,7 +304,10 @@ textarea{resize:vertical;min-height:80px}
           <h3>רשימת עולים לתורה</h3>
           <p style="font-size:12px;color:var(--muted);margin-bottom:14px">עד 5 עליות בשבת (כולל החתן). יש למלא ולהחזיר לפני השבת.</p>
           <table class="aliyot-table">
-            <thead><tr><th style="width:30px">#</th><th>שם פרטי</th><th>שם משפחה</th><th>שם האב</th><th>קרבה משפחתית</th></tr></thead>
+            <thead><tr>
+              <th style="width:30px">#</th>
+              <th>שם פרטי</th><th>שם משפחה</th><th>שם האב</th><th>קרבה משפחתית</th>
+            </tr></thead>
             <tbody id="aliyotBody"></tbody>
           </table>
           <div style="display:flex;gap:8px;margin-top:10px">
@@ -311,7 +317,7 @@ textarea{resize:vertical;min-height:80px}
         </div>
         <div class="actions">
           <button type="reset" class="btn btn-secondary" onclick="setTimeout(initRows,10)">נקה טופס</button>
-          <button type="submit" class="btn btn-primary">שלח רשימה ✓</button>
+          <button type="submit" class="btn btn-primary" id="btn3">שלח רשימה ✓</button>
         </div>
       </form>
     </div>
@@ -331,131 +337,172 @@ textarea{resize:vertical;min-height:80px}
 </footer>
 
 <script>
+var WEBHOOK = 'https://hook.eu1.make.com/9eiz2x7cg9klke7osb18f3y78e8am85z';
 
-// ── Hebrew Calendar ───────────────────────────────────────
-var HM=['','תשרי','חשון','כסלו','טבת','שבט','אדר','ניסן','אייר','סיון','תמוז','אב','אלול'];
-var HML=['','תשרי','חשון','כסלו','טבת','שבט','אדר א׳','אדר ב׳','ניסן','אייר','סיון','תמוז','אב','אלול'];
-var O=['','א','ב','ג','ד','ה','ו','ז','ח','ט'],T=['','י','כ','ל','מ','נ','ס','ע','פ','צ'],H=['','ק','ר','ש','ת'];
-function n2h(n){if(n<=0||n>9999)return'';var r='';var th=Math.floor(n/1000);if(th){r+=n2h(th)+"'";n-=th*1000;}var h=Math.floor(n/100);n-=h*100;if(h<=4)r+=H[h];else if(h===5)r+='תק';else if(h===6)r+='תר';else if(h===7)r+='תש';else if(h===8)r+='תת';else if(h===9)r+='תתק';if(n===15)r+='טו';else if(n===16)r+='טז';else{r+=T[Math.floor(n/10)];r+=O[n%10];}if(r.length>1)r=r.slice(0,-1)+'"'+r.slice(-1);else if(r.length===1)r+="'";return r;}
+/* ── Hebrew calendar ─────────────────────────────────────── */
+var O=['','\u05d0','\u05d1','\u05d2','\u05d3','\u05d4','\u05d5','\u05d6','\u05d7','\u05d8'];
+var T=['','\u05d9','\u05db','\u05dc','\u05de','\u05e0','\u05e1','\u05e2','\u05e4','\u05e6'];
+var H=['','\u05e7','\u05e8','\u05e9','\u05ea'];
+function n2h(n){
+  if(n<=0||n>9999)return'';
+  var r='',th=Math.floor(n/1000);
+  if(th){r+=n2h(th)+"'";n-=th*1000;}
+  var h=Math.floor(n/100);n-=h*100;
+  if(h<=4)r+=H[h];else if(h===5)r+='\u05ea\u05e7';else if(h===6)r+='\u05ea\u05e8';else if(h===7)r+='\u05ea\u05e9';else if(h===8)r+='\u05ea\u05ea';else if(h===9)r+='\u05ea\u05ea\u05e7';
+  if(n===15)r+='\u05d8\u05d5';else if(n===16)r+='\u05d8\u05d6';
+  else{r+=T[Math.floor(n/10)];r+=O[n%10];}
+  if(r.length>1)r=r.slice(0,-1)+'"'+r.slice(-1);
+  else if(r.length===1)r+="'";
+  return r;
+}
 function greg2heb(y,m,d){
   try{
-    var date=new Date(y,m-1,d,12,0,0);
+    var dt=new Date(y,m-1,d,12,0,0);
     var fmt=new Intl.DateTimeFormat('he-u-ca-hebrew',{year:'numeric',month:'long',day:'numeric'});
-    var parts=fmt.formatToParts(date);
-    var hDay=0,hMonth='',hYear=0;
-    parts.forEach(function(p){if(p.type==='day')hDay=parseInt(p.value);if(p.type==='month')hMonth=p.value;if(p.type==='year')hYear=parseInt(p.value);});
-    return n2h(hDay)+' ב'+hMonth+' '+n2h(hYear%1000);
+    var pts=fmt.formatToParts(dt),hd=0,hm='',hy=0;
+    pts.forEach(function(p){
+      if(p.type==='day')hd=parseInt(p.value);
+      if(p.type==='month')hm=p.value;
+      if(p.type==='year')hy=parseInt(p.value);
+    });
+    return n2h(hd)+' \u05d1'+hm+' '+n2h(hy%1000);
   }catch(e){return '';}
 }
 
-// ── Day of week ───────────────────────────────────────────
-var DAYS_HE = ['ראשון','שני','שלישי','רביעי','חמישי','שישי','שבת'];
-var ed1 = document.getElementById('eventDate1');
-if (ed1) ed1.addEventListener('change', function() {
-  var v = this.value;
-  var dayBox = document.getElementById('dayOfWeekDisplay');
-  var dayHid = document.getElementById('dayOfWeekHidden');
-  var hebBox = document.getElementById('hebrewDateDisplay');
-  var hebManual = document.getElementById('hebDateManual');
-  if (!v) {
-    if(dayBox) dayBox.textContent='—';
-    if(hebBox) hebBox.textContent='—';
+/* ── Event date change ───────────────────────────────────── */
+var DAYS=['\u05e8\u05d0\u05e9\u05d5\u05df','\u05e9\u05e0\u05d9','\u05e9\u05dc\u05d9\u05e9\u05d9','\u05e8\u05d1\u05d9\u05e2\u05d9','\u05d7\u05de\u05d9\u05e9\u05d9','\u05e9\u05d9\u05e9\u05d9','\u05e9\u05d1\u05ea'];
+document.getElementById('eventDate').addEventListener('change',function(){
+  var v=this.value;
+  if(!v){
+    document.getElementById('hebDateDisplay').textContent='\u2014';
+    document.getElementById('dayDisplay').textContent='\u2014';
     return;
   }
-  var d = new Date(v + 'T12:00:00');
-  var dayName = 'יום ' + DAYS_HE[d.getDay()];
-  if(dayBox) dayBox.textContent = dayName;
-  if(dayHid) dayHid.value = dayName;
-  var parts = v.split('-').map(Number);
-  try {
-    var hebStr = greg2heb(parts[0], parts[1], parts[2]);
-    if(hebBox) hebBox.textContent = hebStr;
-    if(hebManual) hebManual.value = hebStr;
-  } catch(e) { if(hebBox) hebBox.textContent='—'; }
+  var p=v.split('-').map(Number);
+  var heb=greg2heb(p[0],p[1],p[2]);
+  document.getElementById('hebDateDisplay').textContent=heb||'\u2014';
+  document.getElementById('hebDateVal').value=heb;
+  var d=new Date(v+'T12:00:00');
+  var day='\u05d9\u05d5\u05dd '+DAYS[d.getDay()];
+  document.getElementById('dayDisplay').textContent=day;
+  document.getElementById('dayVal').value=day;
 });
 
-// ── Total amount ──────────────────────────────────────────
-function updateTotal(r) {
-  var isYes = r.value === 'כן';
-  var ta = document.getElementById('totalAmt');
-  var th = document.getElementById('totalHidden');
-  if(ta) ta.textContent = isYes ? '₪5,300' : '₪1,800';
-  if(th) th.value = isYes ? '5300' : '1800';
+/* ── Total ───────────────────────────────────────────────── */
+function updateTotal(r){
+  var yes=r.value==='\u05db\u05df';
+  document.getElementById('totalAmt').textContent=yes?'&#8362;5,300':'&#8362;1,800';
+  document.getElementById('totalHidden').value=yes?'5300':'1800';
 }
 
-// ── Digital Signature ─────────────────────────────────────
-var sigCanvas, sigCtx, sigDrawing = false, sigLastX = 0, sigLastY = 0;
-function initSignature() {
-  sigCanvas = document.getElementById('signatureCanvas');
-  if (!sigCanvas) return;
-  sigCanvas.width = sigCanvas.offsetWidth || 600;
-  sigCanvas.height = 150;
-  sigCtx = sigCanvas.getContext('2d');
-  sigCtx.strokeStyle = '#1a2744';
-  sigCtx.lineWidth = 2;
-  sigCtx.lineCap = 'round';
-  function getPos(e, touch) {
-    var r = sigCanvas.getBoundingClientRect();
-    var src = touch ? e.touches[0] : e;
-    return {x:(src.clientX-r.left)*(sigCanvas.width/r.width), y:(src.clientY-r.top)*(sigCanvas.height/r.height)};
+/* ── Signature ───────────────────────────────────────────── */
+var sc,sctx,sdrawing=false,slx=0,sly=0;
+function initSig(){
+  sc=document.getElementById('sigCanvas');
+  if(!sc)return;
+  sc.width=sc.offsetWidth||600;sc.height=150;
+  sctx=sc.getContext('2d');
+  sctx.strokeStyle='#1a2744';sctx.lineWidth=2;sctx.lineCap='round';
+  function pos(e,t){
+    var r=sc.getBoundingClientRect(),s=t?e.touches[0]:e;
+    return{x:(s.clientX-r.left)*(sc.width/r.width),y:(s.clientY-r.top)*(sc.height/r.height)};
   }
-  function draw(x, y) {
-    sigCtx.beginPath(); sigCtx.moveTo(sigLastX, sigLastY); sigCtx.lineTo(x, y); sigCtx.stroke();
-    sigLastX = x; sigLastY = y;
-    var sd = document.getElementById('signatureData');
-    if(sd) sd.value = sigCanvas.toDataURL();
+  function draw(x,y){
+    sctx.beginPath();sctx.moveTo(slx,sly);sctx.lineTo(x,y);sctx.stroke();
+    slx=x;sly=y;
+    document.getElementById('sigData').value=sc.toDataURL();
   }
-  sigCanvas.addEventListener('mousedown', function(e){ sigDrawing=true; var p=getPos(e); sigLastX=p.x; sigLastY=p.y; });
-  sigCanvas.addEventListener('mousemove', function(e){ if(sigDrawing){ var p=getPos(e); draw(p.x,p.y); } });
-  sigCanvas.addEventListener('mouseup', function(){ sigDrawing=false; });
-  sigCanvas.addEventListener('mouseleave', function(){ sigDrawing=false; });
-  sigCanvas.addEventListener('touchstart', function(e){ e.preventDefault(); sigDrawing=true; var p=getPos(e,true); sigLastX=p.x; sigLastY=p.y; },{passive:false});
-  sigCanvas.addEventListener('touchmove', function(e){ e.preventDefault(); if(sigDrawing){ var p=getPos(e,true); draw(p.x,p.y); } },{passive:false});
-  sigCanvas.addEventListener('touchend', function(){ sigDrawing=false; });
+  sc.addEventListener('mousedown',function(e){sdrawing=true;var p=pos(e);slx=p.x;sly=p.y;});
+  sc.addEventListener('mousemove',function(e){if(sdrawing){var p=pos(e);draw(p.x,p.y);}});
+  sc.addEventListener('mouseup',function(){sdrawing=false;});
+  sc.addEventListener('mouseleave',function(){sdrawing=false;});
+  sc.addEventListener('touchstart',function(e){e.preventDefault();sdrawing=true;var p=pos(e,1);slx=p.x;sly=p.y;},{passive:false});
+  sc.addEventListener('touchmove',function(e){e.preventDefault();if(sdrawing){var p=pos(e,1);draw(p.x,p.y);}},{passive:false});
+  sc.addEventListener('touchend',function(){sdrawing=false;});
 }
-function clearSignature() {
-  if(sigCtx) sigCtx.clearRect(0,0,sigCanvas.width,sigCanvas.height);
-  var sd=document.getElementById('signatureData'); if(sd) sd.value='';
+function clearSig(){
+  if(sctx)sctx.clearRect(0,0,sc.width,sc.height);
+  var sd=document.getElementById('sigData');if(sd)sd.value='';
 }
 
-// ── Submit to Formspree + Webhook ─────────────────────────
-function handleSubmit(e, formId) {
+/* ── PDF via print window ────────────────────────────────── */
+function generatePDF(formId,data){
+  try{
+    var titles={'form1':'\u05d4\u05d6\u05de\u05e0\u05ea \u05d0\u05d9\u05e8\u05d5\u05e2 \u05d5\u05d4\u05ea\u05d7\u05d9\u05d9\u05d1\u05d5\u05ea','form3':'\u05e8\u05e9\u05d9\u05de\u05ea \u05e2\u05d5\u05dc\u05d9\u05dd \u05dc\u05ea\u05d5\u05e8\u05d4'};
+    var title=titles[formId]||formId;
+    var dateStr=new Date().toLocaleDateString('he-IL');
+    var rows='';
+    Object.keys(data).forEach(function(k){
+      if(k.startsWith('_')||!data[k]||k==='\u05d7\u05ea\u05d9\u05de\u05d4')return;
+      rows+='<tr><td class="lbl">'+k+'</td><td class="val">'+data[k]+'</td></tr>';
+    });
+    var sigHtml=data['\u05d7\u05ea\u05d9\u05de\u05d4']?'<div style="margin-top:16px;border-top:1px solid #d4c89a;padding-top:12px"><p style="font-size:12px;color:#888;margin-bottom:6px">\u05d7\u05ea\u05d9\u05de\u05d4:</p><img src="'+data['\u05d7\u05ea\u05d9\u05de\u05d4']+'" style="max-height:80px;border:1px solid #d4c89a;border-radius:6px"/></div>':'';
+    var css='body{font-family:Heebo,sans-serif;direction:rtl;margin:0}'
+      +'.hdr{background:#1a2744;color:#fff;text-align:center;padding:18px}'
+      +'.hdr h1{font-family:"Frank Ruhl Libre",serif;font-size:17px;margin:0 0 5px}'
+      +'.hdr p{font-size:11px;color:rgba(255,255,255,.7);margin:0}'
+      +'.gold{height:3px;background:#b8952a}'
+      +'.body{padding:20px 28px}'
+      +'.doc-title{text-align:center;font-family:"Frank Ruhl Libre",serif;font-size:20px;color:#1a2744;margin:14px 0 4px;font-weight:700}'
+      +'.doc-date{text-align:center;color:#888;font-size:11px;margin-bottom:14px}'
+      +'table{width:100%;border-collapse:collapse}'
+      +'tr:nth-child(even){background:#f5f3ec}'
+      +'td{padding:8px 12px;font-size:13px;border-bottom:1px solid #e8e0c8}'
+      +'.lbl{color:#888;width:40%;font-size:12px}'
+      +'.val{color:#1a2744;font-weight:500}'
+      +'.foot{text-align:center;margin-top:20px;padding-top:14px;border-top:2px solid #b8952a;font-family:"Frank Ruhl Libre",serif;color:#1a2744;font-size:14px}'
+      +'@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}';
+    var html='<!DOCTYPE html><html dir="rtl" lang="he"><head><meta charset="UTF-8">'
+      +'<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@700&family=Heebo&display=swap" rel="stylesheet">'
+      +'<style>'+css+'</style></head><body>'
+      +'<div class="hdr"><h1>\u05e7\u05d4\u05d9\u05dc\u05ea \u05d0\u05d7\u05d5\u05d5\u05ea \u05e8\u05e2\u05d9\u05dd \u2013 \u05d1\u05d9\u05ea \u05d4\u05db\u05e0\u05e1\u05ea \u05d0\u05d3\u05de\u05d5\u05df \u05e1\u05e4\u05e8\u05d0</h1>'
+      +'<p>\u05d4\u05e1\u05d9\u05d9\u05e4\u05df 10, \u05dc\u05d1-\u05d4\u05e4\u05d0\u05e8\u05e7, \u05e8\u05e2\u05e0\u05e0\u05d4 | \u05d8\u05dc\u05f3 09-7724039</p></div>'
+      +'<div class="gold"></div>'
+      +'<div class="body"><div class="doc-title">'+title+'</div><div class="doc-date">'+dateStr+'</div>'
+      +'<table>'+rows+'</table>'+sigHtml
+      +'<div class="foot">\u05d1\u05d1\u05e8\u05db\u05ea \u05de\u05d6\u05dc \u05d8\u05d5\u05d1 | \u05d5\u05e2\u05d3 \u05d1\u05d9\u05ea \u05d4\u05db\u05e0\u05e1\u05ea</div>'
+      +'</div><script>window.onload=function(){window.print();}<\/script></body></html>';
+    var w=window.open('','_blank','width=800,height=900');
+    w.document.write(html);w.document.close();
+  }catch(err){console.log(err);}
+}
+
+/* ── Form submit ─────────────────────────────────────────── */
+function handleSubmit(e,formId){
   e.preventDefault();
-  var form = document.getElementById(formId);
-  var btn = form.querySelector('[type=submit]');
-  btn.disabled = true;
-  btn.innerHTML = btn.innerHTML.replace('✓','<span class="spinner"></span>');
-  var formData = new FormData(form);
-  var data = {};
-  formData.forEach(function(val,key){ data[key]=val; });
-  var p1 = fetch(form.action, {method:'POST', body:formData, headers:{'Accept':'application/json'}});
-  var webhookData = Object.assign({},data,{_formType:formId});
-  var p2 = fetch('https://hook.eu1.make.com/9eiz2x7cg9klke7osb18f3y78e8am85z', {method:'POST', body:JSON.stringify(webhookData), headers:{'Content-Type':'application/json'}});
-  Promise.all([p1,p2]).then(function(results){
-    if(results[0].ok){
-      try{ generatePDF(formId,data); }catch(err){ console.log(err); }
+  var form=document.getElementById(formId);
+  var btn=form.querySelector('[type=submit]');
+  btn.disabled=true;
+  btn.innerHTML=btn.innerHTML.replace('\u2713','<span class="spinner"></span>');
+  var fd=new FormData(form);
+  var data={};fd.forEach(function(v,k){data[k]=v;});
+  var p1=fetch(form.action,{method:'POST',body:fd,headers:{'Accept':'application/json'}});
+  var p2=fetch(WEBHOOK,{method:'POST',body:JSON.stringify(Object.assign({},data,{_formType:formId})),headers:{'Content-Type':'application/json'}});
+  Promise.all([p1,p2]).then(function(res){
+    if(res[0].ok){
+      try{generatePDF(formId,data);}catch(err){}
       document.getElementById(formId+'-wrap').style.display='none';
       document.getElementById(formId+'-success').style.display='block';
       window.scrollTo({top:0,behavior:'smooth'});
-    } else {
-      alert('שגיאה בשליחה. נסה שוב.');
+    }else{
+      alert('\u05e9\u05d2\u05d9\u05d0\u05d4 \u05d1\u05e9\u05dc\u05d9\u05d7\u05d4. \u05e0\u05e1\u05d4 \u05e9\u05d5\u05d1.');
       btn.disabled=false;
-      btn.innerHTML=btn.innerHTML.replace('<span class="spinner"></span>','✓');
+      btn.innerHTML=btn.innerHTML.replace('<span class="spinner"></span>','\u2713');
     }
   }).catch(function(){
-    alert('שגיאת חיבור.');
+    alert('\u05e9\u05d2\u05d9\u05d0\u05ea \u05d7\u05d9\u05d1\u05d5\u05e8.');
     btn.disabled=false;
-    btn.innerHTML=btn.innerHTML.replace('<span class="spinner"></span>','✓');
+    btn.innerHTML=btn.innerHTML.replace('<span class="spinner"></span>','\u2713');
   });
 }
 
-function resetForm(formId){
-  document.getElementById(formId).reset();
-  document.getElementById(formId+'-success').style.display='none';
-  document.getElementById(formId+'-wrap').style.display='block';
+function resetForm(id){
+  document.getElementById(id).reset();
+  document.getElementById(id+'-success').style.display='none';
+  document.getElementById(id+'-wrap').style.display='block';
 }
 
-// ── Navigation ────────────────────────────────────────────
+/* ── Navigation ──────────────────────────────────────────── */
 function showPage(id,btn){
   document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
   document.querySelectorAll('.main-tab').forEach(function(b){b.classList.remove('active');});
@@ -463,31 +510,25 @@ function showPage(id,btn){
   btn.classList.add('active');
   window.scrollTo({top:0,behavior:'smooth'});
 }
-function showSub(show,hide,btn){
-  document.getElementById(show).style.display='block';
-  document.getElementById(hide).style.display='none';
-  btn.parentElement.querySelectorAll('.sub-tab').forEach(function(b){b.classList.remove('active');});
-  btn.classList.add('active');
-}
 
-// ── Aliyot ────────────────────────────────────────────────
+/* ── Aliyot ──────────────────────────────────────────────── */
 function addRow(){
-  var tb=document.getElementById('aliyotBody'); if(tb.rows.length>=7)return;
-  var n=tb.rows.length+1; var tr=document.createElement('tr');
-  tr.innerHTML='<td style="text-align:center;font-size:12px;color:var(--muted);padding:6px">'+n+'</td>'+
-    '<td><input type="text" name="עולה'+n+'_שם_פרטי" placeholder="שם פרטי"/></td>'+
-    '<td><input type="text" name="עולה'+n+'_שם_משפחה" placeholder="שם משפחה"/></td>'+
-    '<td><input type="text" name="עולה'+n+'_שם_האב" placeholder="שם האב"/></td>'+
-    '<td><input type="text" name="עולה'+n+'_קרבה" placeholder="קרבה"/></td>';
+  var tb=document.getElementById('aliyotBody');if(tb.rows.length>=7)return;
+  var n=tb.rows.length+1;var tr=document.createElement('tr');
+  tr.innerHTML='<td style="text-align:center;font-size:12px;color:var(--muted);padding:6px">'+n+'</td>'
+    +'<td><input type="text" name="\u05e2\u05d5\u05dc\u05d4'+n+'_\u05e9\u05dd_\u05e4\u05e8\u05d8\u05d9" placeholder="\u05e9\u05dd \u05e4\u05e8\u05d8\u05d9"/></td>'
+    +'<td><input type="text" name="\u05e2\u05d5\u05dc\u05d4'+n+'_\u05e9\u05dd_\u05de\u05e9\u05e4\u05d7\u05d4" placeholder="\u05e9\u05dd \u05de\u05e9\u05e4\u05d7\u05d4"/></td>'
+    +'<td><input type="text" name="\u05e2\u05d5\u05dc\u05d4'+n+'_\u05e9\u05dd_\u05d4\u05d0\u05d1" placeholder="\u05e9\u05dd \u05d4\u05d0\u05d1"/></td>'
+    +'<td><input type="text" name="\u05e2\u05d5\u05dc\u05d4'+n+'_\u05e7\u05e8\u05d1\u05d4" placeholder="\u05e7\u05e8\u05d1\u05d4"/></td>';
   tb.appendChild(tr);
 }
-function removeRow(){var tb=document.getElementById('aliyotBody'); if(tb.rows.length>1)tb.deleteRow(-1);}
-function initRows(){var tb=document.getElementById('aliyotBody'); tb.innerHTML=''; for(var i=0;i<5;i++)addRow();}
+function removeRow(){var tb=document.getElementById('aliyotBody');if(tb.rows.length>1)tb.deleteRow(-1);}
+function initRows(){var tb=document.getElementById('aliyotBody');tb.innerHTML='';for(var i=0;i<5;i++)addRow();}
 
-// ── Init ─────────────────────────────────────────────────
+/* ── Init ────────────────────────────────────────────────── */
+document.getElementById('submitDate').value=new Date().toISOString().split('T')[0];
 initRows();
-initSignature();
-
+initSig();
 </script>
 </body>
 </html>
