@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>טפסי קהילת אחוות רעים – בית הכנסת אדמון ספרא</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700&family=Heebo:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#1a2744;--gold:#b8952a;--gold-light:#e8d48a;--cream:#faf8f2;--border:#d4c89a;--text:#2c2c2c;--muted:#6b6b6b;--error:#c0392b;--shadow:0 2px 16px rgba(26,39,68,0.12)}
+html,body{min-height:100%;background:var(--cream);color:var(--text);font-family:'Heebo',sans-serif}
+body{padding:0 0 60px}
+.site-header{background:var(--navy);color:#fff;text-align:center;padding:24px 16px 20px;border-bottom:3px solid var(--gold)}
+.site-header h1{font-family:'Frank Ruhl Libre',serif;font-size:22px;font-weight:700;margin-bottom:5px}
+.site-header p{font-size:13px;color:rgba(255,255,255,0.65)}
+.site-header a{color:var(--gold-light);text-decoration:none}
+.main-tabs{display:flex;justify-content:center;background:#fff;border-bottom:2px solid var(--border);position:sticky;top:0;z-index:50;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.main-tab{flex:1;max-width:220px;padding:14px 8px;font-size:13px;font-family:'Heebo',sans-serif;font-weight:500;cursor:pointer;border:none;background:none;color:var(--muted);border-bottom:3px solid transparent;margin-bottom:-2px;transition:all 0.2s;text-align:center}
+.main-tab:hover{color:var(--navy);background:rgba(184,149,42,0.05)}
+.main-tab.active{color:var(--navy);border-bottom-color:var(--gold);background:rgba(184,149,42,0.06)}
+.page{display:none;max-width:680px;margin:28px auto;padding:0 16px}
+.page.active{display:block}
+.card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:24px;box-shadow:var(--shadow)}
+.section{margin-bottom:24px}
+.section h3{font-family:'Frank Ruhl Libre',serif;font-size:15px;font-weight:700;color:var(--navy);margin-bottom:14px;padding-bottom:7px;border-bottom:1.5px solid var(--gold-light)}
+.field-row{display:grid;gap:12px;margin-bottom:12px}
+.cols2{grid-template-columns:1fr 1fr}.cols3{grid-template-columns:1fr 1fr 1fr}
+@media(max-width:520px){.cols2,.cols3{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column;gap:5px}
+.field label{font-size:12px;font-weight:500;color:var(--muted)}
+input[type=text],input[type=email],input[type=tel],input[type=date],textarea{font-family:'Heebo',sans-serif;font-size:14px;padding:9px 11px;border:1px solid var(--border);border-radius:7px;background:#fff;color:var(--text);direction:rtl;transition:border 0.2s;width:100%}
+input:focus,textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(184,149,42,0.12)}
+textarea{resize:vertical;min-height:80px}
+.radio-group{display:flex;gap:18px;flex-wrap:wrap;padding:6px 0}
+.radio-group label,.check-group label{font-size:13px;color:var(--text);display:flex;align-items:center;gap:7px;cursor:pointer;font-weight:400}
+.radio-group input[type=radio],.check-group input[type=checkbox]{width:auto;accent-color:var(--gold)}
+.cost-table{width:100%;border-collapse:collapse;margin-bottom:12px;font-size:13px}
+.cost-table th{background:var(--navy);color:#fff;padding:9px 12px;text-align:right;font-weight:500;font-size:12px}
+.cost-table td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:middle}
+.cost-table tr:last-child td{border-bottom:none;font-weight:500}
+.amount{text-align:left;font-weight:500;color:var(--navy);white-space:nowrap}
+.inline-radio{display:flex;gap:14px;justify-content:center}
+.inline-radio label{font-size:13px;color:var(--text);display:flex;align-items:center;gap:5px;cursor:pointer;font-weight:400}
+.inline-radio input{width:auto;accent-color:var(--gold)}
+.info-box{background:rgba(184,149,42,0.07);border:1px solid var(--gold-light);border-radius:8px;padding:11px 14px;font-size:13px;line-height:1.75;margin-bottom:14px}
+.info-box strong{color:var(--navy)}
+.bank-box{background:var(--cream);border:1px solid var(--gold-light);border-radius:8px;padding:13px 15px;font-size:13px}
+.bank-title{font-weight:500;color:var(--navy);font-size:13px;margin-bottom:8px;font-family:'Frank Ruhl Libre',serif}
+.bank-row{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px dashed var(--border)}
+.bank-row:last-child{border-bottom:none}
+.bank-row span:first-child{color:var(--muted)}
+.bank-row span:last-child{font-weight:500;color:var(--navy)}
+.commit-box{background:#fffbea;border:1px solid var(--gold-light);border-radius:8px;padding:13px 15px;font-size:13px;line-height:1.9;margin-bottom:14px}
+.shabbat-hero{background:var(--navy);border-radius:8px;padding:16px;margin-bottom:16px;text-align:center}
+.shabbat-hero h2{font-family:'Frank Ruhl Libre',serif;font-size:17px;color:#fff;margin-bottom:4px}
+.shabbat-hero p{font-size:12px;color:rgba(255,255,255,0.6)}
+.rule-block{border:1px solid var(--border);border-radius:8px;margin-bottom:12px;overflow:hidden}
+.rule-block-head{background:rgba(184,149,42,0.09);padding:10px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border)}
+.rule-block-head span{font-weight:500;font-size:13px;color:var(--navy);font-family:'Frank Ruhl Libre',serif}
+.tag{margin-right:auto;font-size:11px;padding:2px 9px;border-radius:10px;font-weight:500}
+.tag-red{background:#fde8e8;color:#9b2c2c}.tag-blue{background:#e8f0fd;color:#1a3a6e}
+.rules-list{padding:10px 14px}
+.rule-item{display:flex;gap:10px;padding:7px 0;border-bottom:1px solid rgba(212,200,154,0.35);font-size:13px;line-height:1.65;align-items:flex-start}
+.rule-item:last-child{border-bottom:none}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--gold);margin-top:7px;flex-shrink:0}
+.rule-title{font-weight:500;color:var(--navy);margin-left:3px}
+.sub-tabs{display:flex;gap:8px;margin-bottom:16px}
+.sub-tab{padding:6px 18px;font-size:13px;font-family:'Heebo',sans-serif;font-weight:500;cursor:pointer;border:1px solid var(--border);border-radius:20px;background:none;color:var(--muted);transition:all 0.2s}
+.sub-tab:hover{border-color:var(--gold);color:var(--navy)}
+.sub-tab.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.aliyot-table{width:100%;border-collapse:collapse;font-size:13px}
+.aliyot-table th{background:var(--navy);color:#fff;padding:8px 10px;text-align:right;font-weight:500;font-size:12px}
+.aliyot-table td{border:1px solid var(--border);padding:4px}
+.aliyot-table td input{border:none;background:transparent;padding:5px 7px;font-size:13px;width:100%;font-family:'Heebo',sans-serif;direction:rtl}
+.aliyot-table td input:focus{background:rgba(184,149,42,0.07);outline:none;border-radius:3px}
+.btn{font-family:'Heebo',sans-serif;font-size:14px;font-weight:500;padding:11px 26px;border-radius:8px;cursor:pointer;transition:all 0.2s;border:1.5px solid}
+.btn-primary{background:var(--navy);color:#fff;border-color:var(--navy)}
+.btn-primary:hover{background:#243260}
+.btn-primary:disabled{opacity:0.6;cursor:not-allowed}
+.btn-secondary{background:transparent;color:var(--navy);border-color:var(--navy)}
+.btn-secondary:hover{background:rgba(26,39,68,0.05)}
+.btn-sm{padding:6px 13px;font-size:12px}
+.btn-danger{background:transparent;color:var(--error);border-color:var(--error)}
+.actions{display:flex;gap:10px;justify-content:flex-end;margin-top:20px;border-top:1px solid var(--border);padding-top:16px}
+.success-msg{display:none;text-align:center;padding:32px 20px}
+.success-msg .check{font-size:48px;margin-bottom:12px}
+.success-msg h3{font-family:'Frank Ruhl Libre',serif;font-size:20px;color:var(--navy);margin-bottom:8px}
+.success-msg p{font-size:14px;color:var(--muted);margin-bottom:20px}
+.spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,0.4);border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite;vertical-align:middle;margin-left:8px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.site-footer{text-align:center;margin-top:40px;font-size:12px;color:var(--muted);padding:0 16px}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+<!-- iframe נסתר לקליטת תשובת הסקריפט ללא ניתוב דף -->
+
+<header class="site-header">
+  <h1>קהילת אחוות רעים – בית הכנסת אדמון ספרא</h1>
+  <p>הסייפן 10, לב-הפארק, רעננה | טל׳ <a href="tel:097724039">09-7724039</a> | <a href="mailto:achvatreim@hotmail.com">achvatreim@hotmail.com</a></p>
+</header>
+
+<nav class="main-tabs">
+  <button class="main-tab active" onclick="showPage('p1',this)">📋 הזמנת אירוע</button>
+  <button class="main-tab" onclick="showPage('p2',this)">📜 נהלי שבת</button>
+  <button class="main-tab" onclick="showPage('p3',this)">📖 עולים לתורה</button>
+</nav>
+
+<!-- PAGE 1 -->
+<div id="p1" class="page active">
+  <div class="card">
+    <div id="form1-wrap">
+      <form id="form1" name="הזמנת-אירוע" method="POST" action="https://formspree.io/f/mykolqvw" onsubmit="handleSubmit(event,'form1')">
+
+        <div class="section">
+          <h3>פרטי האירוע</h3>
+          <div class="field-row cols2">
+            <div class="field"><label>תאריך הגשה</label><input type="date" name="תאריך הגשה"/></div>
+            <div class="field"><label>תאריך האירוע *</label><input type="date" name="תאריך האירוע" id="eventDate1" required/></div>
+          </div>
+          <div class="field-row cols2">
+            <div class="field">
+              <label>תאריך עברי (אוטומטי)</label>
+              <div id="hebDateDisplay" style="background:rgba(184,149,42,0.08);border:1px solid var(--gold-light);border-radius:7px;padding:9px 11px;font-size:14px;color:var(--navy);font-family:'Frank Ruhl Libre',serif;min-height:40px;display:flex;align-items:center">—</div>
+            </div>
+            <div class="field">
+              <label>תאריך עברי (עריכה)</label>
+              <input type="text" id="hebDateManual" name="תאריך עברי" placeholder='י"ד בניסן תשפ"ה'/>
+            </div>
+          </div>
+          <div class="field-row cols2">
+            <div class="field">
+              <label>יום בשבוע (אוטומטי)</label>
+              <div id="dayOfWeekDisplay" style="background:rgba(184,149,42,0.08);border:1px solid var(--gold-light);border-radius:7px;padding:9px 11px;font-size:14px;color:var(--navy);font-family:'Frank Ruhl Libre',serif;min-height:40px;display:flex;align-items:center">—</div>
+              <input type="hidden" id="dayOfWeekHidden" name="יום בשבוע"/>
+            </div>
+            <div class="field">
+              <label>שעת האירוע</label>
+              <input type="time" name="שעת האירוע"/>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label>סוג האירוע *</label>
+              <div class="radio-group">
+                <label><input type="radio" name="סוג האירוע" value="בר מצווה" required/> בר מצווה</label>
+                <label><input type="radio" name="סוג האירוע" value="חתן כלה"/> חתן כלה</label>
+                <label><input type="radio" name="סוג האירוע" value="ברית"/> ברית</label>
+                <label><input type="radio" name="סוג האירוע" value="אחר"/> אחר</label>
+              </div>
+            </div>
+          </div>
+          <div class="field-row cols2">
+            <div class="field"><label>פרשת השבוע / יום בשבוע</label><input type="text" name="פרשת השבוע"/></div>
+            <div class="field"><label>שם הרב המלווה</label><input type="text" name="שם הרב המלווה"/></div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>פרטי המשפחה</h3>
+          <div class="field-row cols2">
+            <div class="field"><label>שם משפחה *</label><input type="text" name="שם משפחה" required/></div>
+            <div class="field"><label>כתובת מגורים</label><input type="text" name="כתובת מגורים"/></div>
+          </div>
+          <div class="field-row cols2">
+            <div class="field"><label>שם האב</label><input type="text" name="שם האב"/></div>
+            <div class="field"><label>טלפון האב</label><input type="tel" name="טלפון האב"/></div>
+          </div>
+          <div class="field-row cols2">
+            <div class="field"><label>שם האם</label><input type="text" name="שם האם"/></div>
+            <div class="field"><label>טלפון האם</label><input type="tel" name="טלפון האם"/></div>
+          </div>
+          <div class="field-row cols2">
+            <div class="field"><label>שם חתן / בר המצווה</label><input type="text" name="שם חתן בר המצווה"/></div>
+            <div class="field"><label>כתובת מייל</label><input type="email" name="כתובת מייל"/></div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>כיבוד ושירותים</h3>
+          <div class="field-row">
+            <div class="field"><label>כיבוד באולם</label>
+              <div class="radio-group">
+                <label><input type="radio" name="כיבוד באולם" value="כולל"/> כולל</label>
+                <label><input type="radio" name="כיבוד באולם" value="לא כולל"/> לא כולל</label>
+              </div>
+            </div>
+          </div>
+          <div class="field-row"><div class="field"><label>הערות</label><textarea name="הערות" placeholder="הערות נוספות..."></textarea></div></div>
+        </div>
+
+        <div class="section">
+          <h3>עלויות והתחייבות</h3>
+          <table class="cost-table">
+            <thead><tr><th>סעיף</th><th style="text-align:center;width:95px">שימוש באולם</th><th style="text-align:left;width:72px">עלות</th></tr></thead>
+            <tbody>
+              <tr><td>תפעול ואחזקה (אירוע בבית הכנסת)</td><td></td><td class="amount">₪1,800</td></tr>
+              <tr>
+                <td>שימוש באולם התחתון (סעודה / קידוש, כולל ניקיון)</td>
+                <td><div class="inline-radio">
+                  <label><input type="radio" name="שימוש באולם" value="כן" onchange="updateTotal(this)"/> כן</label>
+                  <label><input type="radio" name="שימוש באולם" value="לא" onchange="updateTotal(this)"/> לא</label>
+                </div></td>
+                <td class="amount">₪3,500</td>
+              </tr>
+              <tr><td style="color:var(--muted)">סה"כ</td><td></td><td class="amount" id="totalAmt">₪5,300</td></tr>
+            </tbody>
+          </table>
+          <input type="hidden" name="סכום לתשלום" id="totalHidden" value="5300"/>
+          <div class="info-box"><strong>הערה לשריון התאריך:</strong> יש להעביר מקדמה של <strong>₪500</strong> — סכום זה נכלל בתשלום הכולל ואינו תשלום נוסף.</div>
+          <div class="bank-box">
+            <div class="bank-title">פרטי העברה בנקאית</div>
+            <div class="bank-row"><span>בנק</span><span>דיסקונט (11)</span></div>
+            <div class="bank-row"><span>סניף</span><span>אחוזה (092)</span></div>
+            <div class="bank-row"><span>מספר חשבון</span><span>3747</span></div>
+            <div class="bank-row"><span>שם החשבון</span><span>עמותת שמחת רחל</span></div>
+          </div>
+          <div class="field-row" style="margin-top:14px">
+            <div class="field">
+              <label>חתימה דיגיטלית *</label>
+              <div class="signature-pad-container">
+                <canvas id="signatureCanvas" style="border:1px solid #d4c89a;border-radius:6px;cursor:crosshair;touch-action:none;width:100%;height:150px;display:block"></canvas>
+              </div>
+              <div style="display:flex;justify-content:flex-end;margin-top:6px">
+                <button type="button" onclick="clearSignature()" style="font-size:12px;color:#c0392b;cursor:pointer;background:none;border:1px solid #c0392b;border-radius:5px;padding:3px 10px;font-family:Heebo,sans-serif">נקה חתימה</button>
+              </div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px">חתום באצבע (נייד) או בעכבר (מחשב)</div>
+              <input type="hidden" id="signatureData" name="חתימה"/>
+            </div>
+          </div>
+          <div class="field-row" style="margin-top:10px">
+            <div class="field">
+              <div style="background:#fffbea;border:1px solid var(--gold-light);border-radius:8px;padding:13px;font-size:13px;line-height:1.9;margin-bottom:12px">אני מתחייב/ת לקיים את ההוראות ולהודיע עליהן לכלל האורחים, כולל שמירת שבת, לבוש הולם, איסור מכשירי חשמל בשבת, ושקט במהלך התפילה.</div>
+              <div class="check-group"><label><input type="checkbox" name="אישור התחייבות" value="קראתי ומאשר" required/> קראתי את נהלי השבת ואני מתחייב/ת לפעול לפיהם *</label></div>
+            </div>
+          </div>
+        </div>
+        <div class="actions">
+          <button type="reset" class="btn btn-secondary">נקה טופס</button>
+          <button type="submit" class="btn btn-primary">שלח הזמנה והתחייבות ✓</button>
+        </div>
+      </form>
+    </div>
+    <div id="form1-success" class="success-msg">
+      <div class="check">✅</div>
+      <h3>ההזמנה נשלחה בהצלחה!</h3>
+      <p>תודה רבה. ועד בית הכנסת יחזור אליכם בהקדם לאישור.</p>
+      <p style="font-family:'Frank Ruhl Libre',serif;font-size:15px;color:var(--navy)">בברכת מזל טוב!</p>
+      <button class="btn btn-secondary" onclick="resetForm('form1')">שלח הזמנה נוספת</button>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 2 -->
+<div id="p2" class="page">
+  <div class="card">
+    <div class="shabbat-hero"><h2>נהלי שבת – בית הכנסת אדמון ספרא</h2><p>מזל טוב! בכדי לשמור על אווירה מכבדת ונעימה, אנו מבקשים לפעול לפי ההנחיות הבאות</p></div>
+    <div class="rule-block"><div class="rule-block-head"><span>לו"ז ומהות הטקס</span><span class="tag tag-blue">מידע כללי</span></div><div class="rules-list">
+      <div class="rule-item"><div class="dot"></div><div><span class="rule-title">הנחת תפילין (יום חול):</span> הטקס מתקיים בימי שני או חמישי שלפני שבת בר מצווה. תפילת שחרית מתחילה בשעה 05:45.</div></div>
+      <div class="rule-item"><div class="dot"></div><div><span class="rule-title">עלייה לתורה (שבת):</span> תפילת שחרית מתחילה בשעה 08:00.</div></div>
+      <div class="rule-item"><div class="dot"></div><div><span class="rule-title">זריקת סוכריות:</span> מעזרת הנשים בלבד, בארבעה מועדים.</div></div>
+    </div></div>
+    <div class="rule-block"><div class="rule-block-head"><span>הנחיות כלליות</span><span class="tag tag-blue">לכולם</span></div><div class="rules-list">
+      <div class="rule-item"><div class="dot"></div><div><span class="rule-title">כיסוי ראש:</span> גברים וילדים חייבים בחבישת כיפה.</div></div>
+      <div class="rule-item"><div class="dot"></div><div><span class="rule-title">לבוש:</span> נשים מתבקשות להגיע בלבוש צנוע ונשים נשואות בכיסוי ראש.</div></div>
+      <div class="rule-item"><div class="dot"></div><div><span class="rule-title">שקט:</span> יש להקפיד על שקט מוחלט בעזרת הנשים ובאולם התפילה.</div></div>
+    </div></div>
+    <div class="rule-block"><div class="rule-block-head"><span>שמירת שבת</span><span class="tag tag-red">הנחיות מחייבות</span></div><div class="rules-list">
+      <div class="rule-item"><div class="dot"></div><div><span class="rule-title">מכשירי חשמל:</span> חל איסור מוחלט על שימוש בטלפונים סלולריים ומצלמות בשטח בית הכנסת.</div></div>
+      <div class="rule-item"><div class="dot"></div><div><span class="rule-title">מוקצה:</span> אין להביא עטים, מטריות או אביזרים הכרוכים בחילול שבת.</div></div>
+      <div class="rule-item"><div class="dot"></div><div><span class="rule-title">כיבוד:</span> כל המזון והסוכריות חייבים להגיע לפני כניסת השבת.</div></div>
+      <div class="rule-item"><div class="dot"></div><div><span class="rule-title">הגעה ברכב:</span> אין לחנות בסמיכות למבנה בית הכנסת בשבת.</div></div>
+    </div></div>
+    <div style="text-align:center;margin-top:16px;padding-top:16px;border-top:1px solid var(--border)">
+      <p style="font-family:'Frank Ruhl Libre',serif;font-size:16px;font-weight:700;color:var(--navy)">בברכת מזל טוב | ועד בית הכנסת</p>
+    </div>
+  </div>
+</div>
+
+<div id="p3" class="page">
+  <div class="card">
+    <div id="form3-wrap">
+      <form id="form3" name="עולים-לתורה" method="POST" action="https://formspree.io/f/mvzldjyl" onsubmit="handleSubmit(event,'form3')">
+
+        <div class="section">
+          <h3>פרטי שבת חתן</h3>
+          <div class="field-row cols2">
+            <div class="field"><label>שם משפחת חתן בר מצווה *</label><input type="text" name="שם משפחה" required/></div>
+            <div class="field"><label>תאריך שבת חתן *</label><input type="date" name="תאריך שבת חתן" required/></div>
+          </div>
+        </div>
+        <div class="section">
+          <h3>רשימת עולים לתורה</h3>
+          <p style="font-size:12px;color:var(--muted);margin-bottom:14px">עד 5 עליות בשבת (כולל החתן). יש למלא ולהחזיר לפני השבת.</p>
+          <table class="aliyot-table">
+            <thead><tr><th style="width:30px">#</th><th>שם פרטי</th><th>שם משפחה</th><th>שם האב</th><th>קרבה משפחתית</th></tr></thead>
+            <tbody id="aliyotBody"></tbody>
+          </table>
+          <div style="display:flex;gap:8px;margin-top:10px">
+            <button type="button" class="btn btn-secondary btn-sm" onclick="addRow()">+ הוסף עולה</button>
+            <button type="button" class="btn btn-danger btn-sm" onclick="removeRow()">− הסר שורה</button>
+          </div>
+        </div>
+        <div class="actions">
+          <button type="reset" class="btn btn-secondary" onclick="setTimeout(initRows,10)">נקה טופס</button>
+          <button type="submit" class="btn btn-primary">שלח רשימה ✓</button>
+        </div>
+      </form>
+    </div>
+    <div id="form3-success" class="success-msg">
+      <div class="check">✅</div>
+      <h3>הרשימה נשלחה בהצלחה!</h3>
+      <p>תודה רבה. רשימת העולים התקבלה אצל ועד בית הכנסת.</p>
+      <p style="font-family:'Frank Ruhl Libre',serif;font-size:15px;color:var(--navy)">בברכת מזל טוב!</p>
+      <button class="btn btn-secondary" onclick="resetForm('form3');initRows()">שלח רשימה נוספת</button>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p>© קהילת אחוות רעים – בית הכנסת אדמון ספרא | עמותת שמחת רחל (ע"ר 58-034-929-8)</p>
+  <p style="margin-top:4px"><a href="http://www.achvatreim.co.il" style="color:var(--gold)">www.achvatreim.co.il</a></p>
+</footer>
+
+<script>
+// ── Day of week ───────────────────────────────────────────
+var DAYS_HE = ['ראשון','שני','שלישי','רביעי','חמישי','שישי','שבת'];
+var ed1 = document.getElementById('eventDate1');
+if (ed1) ed1.addEventListener('change', function() {
+  var v = this.value;
+  var box = document.getElementById('dayOfWeekDisplay');
+  var hid = document.getElementById('dayOfWeekHidden');
+  if (!v) { if(box) box.textContent='—'; return; }
+  var d = new Date(v + 'T12:00:00');
+  var name = 'יום ' + DAYS_HE[d.getDay()];
+  if(box) box.textContent = name;
+  if(hid) hid.value = name;
+});
+
+// ── Total amount ──────────────────────────────────────────
+function updateTotal(r) {
+  var isYes = r.value === 'כן';
+  var ta = document.getElementById('totalAmt');
+  var th = document.getElementById('totalHidden');
+  if(ta) ta.textContent = isYes ? '₪5,300' : '₪1,800';
+  if(th) th.value = isYes ? '5300' : '1800';
+}
+
+// ── Digital Signature ─────────────────────────────────────
+var sigCanvas, sigCtx, sigDrawing = false, sigLastX = 0, sigLastY = 0;
+function initSignature() {
+  sigCanvas = document.getElementById('signatureCanvas');
+  if (!sigCanvas) return;
+  sigCanvas.width = sigCanvas.offsetWidth || 600;
+  sigCanvas.height = 150;
+  sigCtx = sigCanvas.getContext('2d');
+  sigCtx.strokeStyle = '#1a2744';
+  sigCtx.lineWidth = 2;
+  sigCtx.lineCap = 'round';
+  function getPos(e, touch) {
+    var r = sigCanvas.getBoundingClientRect();
+    var src = touch ? e.touches[0] : e;
+    return {x:(src.clientX-r.left)*(sigCanvas.width/r.width), y:(src.clientY-r.top)*(sigCanvas.height/r.height)};
+  }
+  function draw(x, y) {
+    sigCtx.beginPath(); sigCtx.moveTo(sigLastX, sigLastY); sigCtx.lineTo(x, y); sigCtx.stroke();
+    sigLastX = x; sigLastY = y;
+    var sd = document.getElementById('signatureData');
+    if(sd) sd.value = sigCanvas.toDataURL();
+  }
+  sigCanvas.addEventListener('mousedown', function(e){ sigDrawing=true; var p=getPos(e); sigLastX=p.x; sigLastY=p.y; });
+  sigCanvas.addEventListener('mousemove', function(e){ if(sigDrawing){ var p=getPos(e); draw(p.x,p.y); } });
+  sigCanvas.addEventListener('mouseup', function(){ sigDrawing=false; });
+  sigCanvas.addEventListener('mouseleave', function(){ sigDrawing=false; });
+  sigCanvas.addEventListener('touchstart', function(e){ e.preventDefault(); sigDrawing=true; var p=getPos(e,true); sigLastX=p.x; sigLastY=p.y; },{passive:false});
+  sigCanvas.addEventListener('touchmove', function(e){ e.preventDefault(); if(sigDrawing){ var p=getPos(e,true); draw(p.x,p.y); } },{passive:false});
+  sigCanvas.addEventListener('touchend', function(){ sigDrawing=false; });
+}
+function clearSignature() {
+  if(sigCtx) sigCtx.clearRect(0,0,sigCanvas.width,sigCanvas.height);
+  var sd=document.getElementById('signatureData'); if(sd) sd.value='';
+}
+
+// ── Submit to Formspree + Webhook ─────────────────────────
+function handleSubmit(e, formId) {
+  e.preventDefault();
+  var form = document.getElementById(formId);
+  var btn = form.querySelector('[type=submit]');
+  btn.disabled = true;
+  btn.innerHTML = btn.innerHTML.replace('✓','<span class="spinner"></span>');
+  var formData = new FormData(form);
+  var data = {};
+  formData.forEach(function(val,key){ data[key]=val; });
+  var p1 = fetch(form.action, {method:'POST', body:formData, headers:{'Accept':'application/json'}});
+  var webhookData = Object.assign({},data,{_formType:formId});
+  var p2 = fetch('https://hook.eu1.make.com/9eiz2x7cg9klke7osb18f3y78e8am85z', {method:'POST', body:JSON.stringify(webhookData), headers:{'Content-Type':'application/json'}});
+  Promise.all([p1,p2]).then(function(results){
+    if(results[0].ok){
+      try{ generatePDF(formId,data); }catch(err){ console.log(err); }
+      document.getElementById(formId+'-wrap').style.display='none';
+      document.getElementById(formId+'-success').style.display='block';
+      window.scrollTo({top:0,behavior:'smooth'});
+    } else {
+      alert('שגיאה בשליחה. נסה שוב.');
+      btn.disabled=false;
+      btn.innerHTML=btn.innerHTML.replace('<span class="spinner"></span>','✓');
+    }
+  }).catch(function(){
+    alert('שגיאת חיבור.');
+    btn.disabled=false;
+    btn.innerHTML=btn.innerHTML.replace('<span class="spinner"></span>','✓');
+  });
+}
+
+function resetForm(formId){
+  document.getElementById(formId).reset();
+  document.getElementById(formId+'-success').style.display='none';
+  document.getElementById(formId+'-wrap').style.display='block';
+}
+
+// ── Navigation ────────────────────────────────────────────
+function showPage(id,btn){
+  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
+  document.querySelectorAll('.main-tab').forEach(function(b){b.classList.remove('active');});
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function showSub(show,hide,btn){
+  document.getElementById(show).style.display='block';
+  document.getElementById(hide).style.display='none';
+  btn.parentElement.querySelectorAll('.sub-tab').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+}
+
+// ── Aliyot ────────────────────────────────────────────────
+function addRow(){
+  var tb=document.getElementById('aliyotBody'); if(tb.rows.length>=7)return;
+  var n=tb.rows.length+1; var tr=document.createElement('tr');
+  tr.innerHTML='<td style="text-align:center;font-size:12px;color:var(--muted);padding:6px">'+n+'</td>'+
+    '<td><input type="text" name="עולה'+n+'_שם_פרטי" placeholder="שם פרטי"/></td>'+
+    '<td><input type="text" name="עולה'+n+'_שם_משפחה" placeholder="שם משפחה"/></td>'+
+    '<td><input type="text" name="עולה'+n+'_שם_האב" placeholder="שם האב"/></td>'+
+    '<td><input type="text" name="עולה'+n+'_קרבה" placeholder="קרבה"/></td>';
+  tb.appendChild(tr);
+}
+function removeRow(){var tb=document.getElementById('aliyotBody'); if(tb.rows.length>1)tb.deleteRow(-1);}
+function initRows(){var tb=document.getElementById('aliyotBody'); tb.innerHTML=''; for(var i=0;i<5;i++)addRow();}
+
+// ── Init ─────────────────────────────────────────────────
+initRows();
+initSignature();
+
+</script>
+</body>
+</html>
