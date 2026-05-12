@@ -391,7 +391,7 @@ document.getElementById('eventDate').addEventListener('change',function(){
 /* ── Total ───────────────────────────────────────────────── */
 function updateTotal(r){
   var yes=r.value==='\u05db\u05df';
-  document.getElementById('totalAmt').textContent=yes?'&#8362;5,300':'&#8362;1,800';
+  document.getElementById('totalAmt').textContent=yes?'₪5,300':'₪1,800';
   document.getElementById('totalHidden').value=yes?'5300':'1800';
 }
 
@@ -470,6 +470,14 @@ function generatePDF(formId,data){
 /* ── Form submit ─────────────────────────────────────────── */
 function handleSubmit(e,formId){
   e.preventDefault();
+  // בדיקת חתימה לטופס 1
+  if(formId==='form1'){
+    var sigVal=document.getElementById('sigData').value;
+    if(!sigVal){
+      alert('יש לחתום לפני השליחה');
+      return;
+    }
+  }
   var form=document.getElementById(formId);
   var btn=form.querySelector('[type=submit]');
   btn.disabled=true;
