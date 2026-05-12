@@ -132,6 +132,13 @@ textarea{resize:vertical;min-height:80px}
           </div>
           <div class="field-row cols2">
             <div class="field">
+              <label>תאריך עברי (אוטומטי)</label>
+              <div id="hebrewDateDisplay" style="background:rgba(184,149,42,0.08);border:1px solid var(--gold-light);border-radius:7px;padding:9px 11px;font-size:14px;color:var(--navy);font-family:'Frank Ruhl Libre',serif;min-height:40px;display:flex;align-items:center">—</div>
+              <input type="text" id="hebDateManual" name="תאריך עברי" placeholder='י"ד בניסן תשפ"ה' style="margin-top:4px"/>
+            </div>
+          </div>
+          <div class="field-row cols2">
+            <div class="field">
               <label>יום בשבוע (אוטומטי)</label>
               <div id="dayOfWeekDisplay" style="background:rgba(184,149,42,0.08);border:1px solid var(--gold-light);border-radius:7px;padding:9px 11px;font-size:14px;color:var(--navy);font-family:'Frank Ruhl Libre',serif;min-height:40px;display:flex;align-items:center">—</div>
               <input type="hidden" id="dayOfWeekHidden" name="יום בשבוע"/>
@@ -324,18 +331,47 @@ textarea{resize:vertical;min-height:80px}
 </footer>
 
 <script>
+
+// ── Hebrew Calendar ───────────────────────────────────────
+var HM=['','תשרי','חשון','כסלו','טבת','שבט','אדר','ניסן','אייר','סיון','תמוז','אב','אלול'];
+var HML=['','תשרי','חשון','כסלו','טבת','שבט','אדר א׳','אדר ב׳','ניסן','אייר','סיון','תמוז','אב','אלול'];
+var O=['','א','ב','ג','ד','ה','ו','ז','ח','ט'],T=['','י','כ','ל','מ','נ','ס','ע','פ','צ'],H=['','ק','ר','ש','ת'];
+function n2h(n){if(n<=0||n>9999)return'';var r='';var th=Math.floor(n/1000);if(th){r+=n2h(th)+"'";n-=th*1000;}var h=Math.floor(n/100);n-=h*100;if(h<=4)r+=H[h];else if(h===5)r+='תק';else if(h===6)r+='תר';else if(h===7)r+='תש';else if(h===8)r+='תת';else if(h===9)r+='תתק';if(n===15)r+='טו';else if(n===16)r+='טז';else{r+=T[Math.floor(n/10)];r+=O[n%10];}if(r.length>1)r=r.slice(0,-1)+'"'+r.slice(-1);else if(r.length===1)r+="'";return r;}
+function greg2heb(y,m,d){
+  try{
+    var date=new Date(y,m-1,d,12,0,0);
+    var fmt=new Intl.DateTimeFormat('he-u-ca-hebrew',{year:'numeric',month:'long',day:'numeric'});
+    var parts=fmt.formatToParts(date);
+    var hDay=0,hMonth='',hYear=0;
+    parts.forEach(function(p){if(p.type==='day')hDay=parseInt(p.value);if(p.type==='month')hMonth=p.value;if(p.type==='year')hYear=parseInt(p.value);});
+    return n2h(hDay)+' ב'+hMonth+' '+n2h(hYear%1000);
+  }catch(e){return '';}
+}
+
 // ── Day of week ───────────────────────────────────────────
 var DAYS_HE = ['ראשון','שני','שלישי','רביעי','חמישי','שישי','שבת'];
 var ed1 = document.getElementById('eventDate1');
 if (ed1) ed1.addEventListener('change', function() {
   var v = this.value;
-  var box = document.getElementById('dayOfWeekDisplay');
-  var hid = document.getElementById('dayOfWeekHidden');
-  if (!v) { if(box) box.textContent='—'; return; }
+  var dayBox = document.getElementById('dayOfWeekDisplay');
+  var dayHid = document.getElementById('dayOfWeekHidden');
+  var hebBox = document.getElementById('hebrewDateDisplay');
+  var hebManual = document.getElementById('hebDateManual');
+  if (!v) {
+    if(dayBox) dayBox.textContent='—';
+    if(hebBox) hebBox.textContent='—';
+    return;
+  }
   var d = new Date(v + 'T12:00:00');
-  var name = 'יום ' + DAYS_HE[d.getDay()];
-  if(box) box.textContent = name;
-  if(hid) hid.value = name;
+  var dayName = 'יום ' + DAYS_HE[d.getDay()];
+  if(dayBox) dayBox.textContent = dayName;
+  if(dayHid) dayHid.value = dayName;
+  var parts = v.split('-').map(Number);
+  try {
+    var hebStr = greg2heb(parts[0], parts[1], parts[2]);
+    if(hebBox) hebBox.textContent = hebStr;
+    if(hebManual) hebManual.value = hebStr;
+  } catch(e) { if(hebBox) hebBox.textContent='—'; }
 });
 
 // ── Total amount ──────────────────────────────────────────
