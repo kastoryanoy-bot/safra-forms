@@ -369,6 +369,46 @@ function greg2heb(y,m,d){
   }catch(e){return '';}
 }
 
+
+/* ── Parasha calculation ─────────────────────────────────── */
+var PARSHIOT = [
+  'בראשית','נח','לך לך','וירא','חיי שרה',
+  'תולדות','ויצא','וישלח','וישב','מקץ',
+  'ויגש','ויחי','שמות','וארא','בוא',
+  'בשלח','יתרו','משפטים','תרומה','תצוה',
+  'כי תשא','ויקהל','פקודי','ויקהל-פקודי',
+  'ויקרא','צו','שמיני','תזריע','מצורע',
+  'תזריע-מצורע','אחרי מות','קדושים',
+  'אחרי מות-קדושים','אמור','בהר בחקותי',
+  'בחקותי','במדבר','נשא','בהעלותך',
+  'שלח לך','קרח','חוקת','בלק','פינחס',
+  'מטות','מסעי','מטות-מסעי',
+  'דברים','ואתחנן','עקב','ראה','שופטים',
+  'כי תצא','כי תבוא','ניצבים','וילך',
+  'ניצבים-וילך','האזינו','וזאת הברכה'
+];
+
+function getParasha(dateStr) {
+  try {
+    // Reference: Bereshit 5785 started on Shabbat Oct 26, 2024
+    // That's week 0. Each week advances by 1 parasha.
+    var ref = new Date('2024-10-26');
+    var target = new Date(dateStr);
+    // Find the nearest Saturday on or after target
+    var day = target.getDay();
+    var daysToSat = (6 - day + 7) % 7;
+    var sat = new Date(target);
+    sat.setDate(sat.getDate() + daysToSat);
+    // Calculate weeks difference from reference
+    var diffMs = sat - ref;
+    var diffWeeks = Math.round(diffMs / (7 * 24 * 60 * 60 * 1000));
+    if (diffWeeks < 0) return '';
+    // Use modulo to cycle through parshiot (54 parshiot in cycle)
+    var idx = diffWeeks % PARSHIOT.length;
+    return 'פרשת ' + PARSHIOT[idx];
+  } catch(e) { return ''; }
+}
+
 /* ── Event date change ───────────────────────────────────── */
 var DAYS=['\u05e8\u05d0\u05e9\u05d5\u05df','\u05e9\u05e0\u05d9','\u05e9\u05dc\u05d9\u05e9\u05d9','\u05e8\u05d1\u05d9\u05e2\u05d9','\u05d7\u05de\u05d9\u05e9\u05d9','\u05e9\u05d9\u05e9\u05d9','\u05e9\u05d1\u05ea'];
 document.getElementById('eventDate').addEventListener('change',function(){
@@ -386,6 +426,10 @@ document.getElementById('eventDate').addEventListener('change',function(){
   var day='\u05d9\u05d5\u05dd '+DAYS[d.getDay()];
   document.getElementById('dayDisplay').textContent=day;
   document.getElementById('dayVal').value=day;
+  // פרשת השבוע
+  var parasha = getParasha(v);
+  var parashaInput = document.querySelector('input[name="פרשת השבוע"]');
+  if(parasha && parashaInput && !parashaInput.value) parashaInput.value = parasha;
 });
 
 /* ── Total ───────────────────────────────────────────────── */
@@ -534,7 +578,11 @@ function removeRow(){var tb=document.getElementById('aliyotBody');if(tb.rows.len
 function initRows(){var tb=document.getElementById('aliyotBody');tb.innerHTML='';for(var i=0;i<5;i++)addRow();}
 
 /* ── Init ────────────────────────────────────────────────── */
-document.getElementById('submitDate').value=new Date().toISOString().split('T')[0];
+var today=new Date();
+var dd=String(today.getDate()).padStart(2,'0');
+var mm=String(today.getMonth()+1).padStart(2,'0');
+var yyyy=today.getFullYear();
+document.getElementById('submitDate').value=yyyy+'-'+mm+'-'+dd;
 initRows();
 initSig();
 </script>
