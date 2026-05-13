@@ -115,56 +115,56 @@ textarea{resize:vertical;min-height:80px}
         <div class="section">
           <h3>פרטי האירוע</h3>
           <div class="field-row cols2">
-            <div class="field"><label>תאריך הגשה</label><input type="date" name="תאריך הגשה" id="submitDate"/></div>
-            <div class="field"><label>תאריך האירוע *</label><input type="date" name="תאריך האירוע" id="eventDate" required/></div>
+            <div class="field"><label>תאריך הגשה</label><input type="date" name="submit_date" id="submitDate"/></div>
+            <div class="field"><label>תאריך האירוע *</label><input type="date" name="event_date" id="eventDate" required/></div>
           </div>
           <div class="field-row cols2">
             <div class="field">
               <label>תאריך עברי</label>
               <div class="auto-box" id="hebDateDisplay">—</div>
-              <input type="hidden" id="hebDateVal" name="תאריך עברי"/>
+              <input type="hidden" id="hebDateVal" name="hebrew_date"/>
               <div class="hint">מחושב אוטומטית</div>
             </div>
             <div class="field">
               <label>יום בשבוע</label>
               <div class="auto-box" id="dayDisplay">—</div>
-              <input type="hidden" id="dayVal" name="יום בשבוע"/>
+              <input type="hidden" id="dayVal" name="day_of_week"/>
             </div>
           </div>
           <div class="field-row cols2">
-            <div class="field"><label>שעת האירוע</label><input type="time" name="שעת האירוע"/></div>
+            <div class="field"><label>שעת האירוע</label><input type="time" name="event_time"/></div>
             <div class="field"><label>סוג האירוע *</label>
               <div class="radio-group">
-                <label><input type="radio" name="סוג האירוע" value="בר מצווה" required/> בר מצווה</label>
-                <label><input type="radio" name="סוג האירוע" value="חתן כלה"/> חתן כלה</label>
-                <label><input type="radio" name="סוג האירוע" value="ברית"/> ברית</label>
-                <label><input type="radio" name="סוג האירוע" value="אחר"/> אחר</label>
+                <label><input type="radio" name="event_type" value="בר מצווה" required/> בר מצווה</label>
+                <label><input type="radio" name="event_type" value="חתן כלה"/> חתן כלה</label>
+                <label><input type="radio" name="event_type" value="ברית"/> ברית</label>
+                <label><input type="radio" name="event_type" value="אחר"/> אחר</label>
               </div>
             </div>
           </div>
           <div class="field-row cols2">
-            <div class="field"><label>פרשת השבוע</label><input type="text" name="פרשת השבוע" id="parashaInput"/></div>
-            <div class="field"><label>שם הרב המלווה</label><input type="text" name="שם הרב המלווה"/></div>
+            <div class="field"><label>פרשת השבוע</label><input type="text" name="parasha" id="parashaInput"/></div>
+            <div class="field"><label>שם הרב המלווה</label><input type="text" name="rabbi"/></div>
           </div>
         </div>
 
         <div class="section">
           <h3>פרטי המשפחה</h3>
           <div class="field-row cols2">
-            <div class="field"><label>שם משפחה *</label><input type="text" name="שם משפחה" required/></div>
-            <div class="field"><label>כתובת מגורים</label><input type="text" name="כתובת מגורים"/></div>
+            <div class="field"><label>שם משפחה *</label><input type="text" name="family_name" required/></div>
+            <div class="field"><label>כתובת מגורים</label><input type="text" name="address"/></div>
           </div>
           <div class="field-row cols2">
-            <div class="field"><label>שם האב</label><input type="text" name="שם האב"/></div>
-            <div class="field"><label>טלפון האב</label><input type="tel" name="טלפון האב"/></div>
+            <div class="field"><label>שם האב</label><input type="text" name="father_name"/></div>
+            <div class="field"><label>טלפון האב</label><input type="tel" name="father_phone"/></div>
           </div>
           <div class="field-row cols2">
-            <div class="field"><label>שם האם</label><input type="text" name="שם האם"/></div>
-            <div class="field"><label>טלפון האם</label><input type="tel" name="טלפון האם"/></div>
+            <div class="field"><label>שם האם</label><input type="text" name="mother_name"/></div>
+            <div class="field"><label>טלפון האם</label><input type="tel" name="mother_phone"/></div>
           </div>
           <div class="field-row cols2">
-            <div class="field"><label>שם חתן / בר המצווה</label><input type="text" name="שם חתן בר המצווה"/></div>
-            <div class="field"><label>כתובת מייל</label><input type="email" name="כתובת מייל"/></div>
+            <div class="field"><label>שם חתן / בר המצווה</label><input type="text" name="groom_name"/></div>
+            <div class="field"><label>כתובת מייל</label><input type="email" name="email"/></div>
           </div>
         </div>
 
@@ -173,12 +173,12 @@ textarea{resize:vertical;min-height:80px}
           <div class="field-row">
             <div class="field"><label>כיבוד באולם</label>
               <div class="radio-group">
-                <label><input type="radio" name="כיבוד באולם" value="כולל"/> כולל</label>
-                <label><input type="radio" name="כיבוד באולם" value="לא כולל"/> לא כולל</label>
+                <label><input type="radio" name="catering" value="כולל"/> כולל</label>
+                <label><input type="radio" name="catering" value="לא כולל"/> לא כולל</label>
               </div>
             </div>
           </div>
-          <div class="field-row"><div class="field"><label>הערות</label><textarea name="הערות" placeholder="הערות נוספות..."></textarea></div></div>
+          <div class="field-row"><div class="field"><label>הערות</label><textarea name="notes" placeholder="הערות נוספות..."></textarea></div></div>
         </div>
 
         <div class="section">
@@ -194,15 +194,15 @@ textarea{resize:vertical;min-height:80px}
               <tr>
                 <td>שימוש באולם התחתון (סעודה / קידוש, כולל ניקיון)</td>
                 <td><div class="inline-radio">
-                  <label><input type="radio" name="שימוש באולם" value="כן" onchange="updateTotal(this)"/> כן</label>
-                  <label><input type="radio" name="שימוש באולם" value="לא" onchange="updateTotal(this)"/> לא</label>
+                  <label><input type="radio" name="hall_use" value="כן" onchange="updateTotal(this)"/> כן</label>
+                  <label><input type="radio" name="hall_use" value="לא" onchange="updateTotal(this)"/> לא</label>
                 </div></td>
                 <td class="amount">₪3,500</td>
               </tr>
               <tr><td style="color:var(--muted)">סה"כ</td><td></td><td class="amount" id="totalAmt">₪5,300</td></tr>
             </tbody>
           </table>
-          <input type="hidden" name="סכום לתשלום" id="totalHidden" value="5300"/>
+          <input type="hidden" name="amount" id="totalHidden" value="5300"/>
 
           <div class="info-box">
             <strong>הערה לשריון התאריך:</strong> יש להעביר מקדמה של <strong>₪500</strong> — סכום זה נכלל בתשלום הכולל ואינו תשלום נוסף. יתרת התשלום תוסדר עד שבוע לפני מועד האירוע.
@@ -223,7 +223,7 @@ textarea{resize:vertical;min-height:80px}
                 <div class="hint">חתום באצבע (נייד) או בעכבר (מחשב)</div>
                 <button type="button" onclick="clearSig()" style="font-size:12px;color:var(--error);cursor:pointer;background:none;border:1px solid var(--error);border-radius:5px;padding:3px 10px;font-family:Heebo,sans-serif">נקה</button>
               </div>
-              <input type="hidden" id="sigData" name="חתימה"/>
+              <input type="hidden" id="sigData" name="signature"/>
             </div>
           </div>
 
@@ -231,7 +231,7 @@ textarea{resize:vertical;min-height:80px}
             <div class="field">
               <div class="commit-box">אני מתחייב/ת לקיים את ההוראות ולהודיע עליהן לכלל האורחים, כולל שמירת שבת, לבוש הולם, איסור מכשירי חשמל בשבת, ושקט במהלך התפילה.</div>
               <div class="check-group">
-                <label><input type="checkbox" name="אישור התחייבות" value="קראתי ומאשר" required/> קראתי את נהלי השבת ואני מתחייב/ת לפעול לפיהם *</label>
+                <label><input type="checkbox" name="commitment" value="קראתי ומאשר" required/> קראתי את נהלי השבת ואני מתחייב/ת לפעול לפיהם *</label>
               </div>
             </div>
           </div>
@@ -296,7 +296,7 @@ textarea{resize:vertical;min-height:80px}
         <div class="section">
           <h3>פרטי שבת חתן</h3>
           <div class="field-row cols2">
-            <div class="field"><label>שם משפחת חתן בר מצווה *</label><input type="text" name="שם משפחה" required/></div>
+            <div class="field"><label>שם משפחת חתן בר מצווה *</label><input type="text" name="family_name" required/></div>
             <div class="field"><label>תאריך שבת חתן *</label><input type="date" name="תאריך שבת חתן" required/></div>
           </div>
         </div>
