@@ -131,6 +131,9 @@ textarea{resize:vertical;min-height:80px}
               <input type="hidden" id="dayVal" name="יום בשבוע"/>
             </div>
           </div>
+          <div id="shabbatBanner" style="display:none;background:rgba(184,149,42,0.1);border:1px solid var(--gold);border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:13px;color:var(--navy)">
+            📖 זהו אירוע שבת — <a href="#" onclick="showPage('p2',document.querySelectorAll('.main-tab')[1]);return false;" style="color:var(--gold);font-weight:500;text-decoration:underline">לחץ לעיון בנהלי שבת</a>
+          </div>
           <div class="field-row cols2">
             <div class="field"><label>שעת האירוע</label><input type="time" name="שעת האירוע"/></div>
             <div class="field"><label>סוג האירוע *</label>
@@ -560,6 +563,26 @@ document.getElementById('eventDate').addEventListener('change',function(){
   var day='\u05d9\u05d5\u05dd '+DAYS[d.getDay()];
   document.getElementById('dayDisplay').textContent=day;
   document.getElementById('dayVal').value=day;
+  // הצג/הסתר התחייבות שבת לפי יום
+  var isShabbat = (d.getDay() === 6);
+  var commitBox = document.querySelector('.commit-box');
+  var commitCheck = document.querySelector('input[name="אישור התחייבות"]');
+  if (commitBox && commitCheck) {
+    if (isShabbat) {
+      commitBox.style.opacity = '1';
+      commitCheck.parentElement.style.opacity = '1';
+      commitCheck.required = true;
+      commitCheck.disabled = false;
+    } else {
+      commitBox.style.opacity = '0.35';
+      commitCheck.parentElement.style.opacity = '0.35';
+      commitCheck.required = false;
+      commitCheck.disabled = true;
+      commitCheck.checked = false;
+    }
+  }
+  var banner = document.getElementById('shabbatBanner');
+  if (banner) banner.style.display = isShabbat ? 'block' : 'none';
   // פרשת השבוע לפי לוח מקומי
   var pi = document.getElementById('parashaInput');
   if(pi) pi.value = getParasha(v);
