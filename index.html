@@ -733,22 +733,25 @@ function handleSubmit(e,formId){
   btn.innerHTML=btn.innerHTML.replace('\u2713','<span class="spinner"></span>');
   var fd=new FormData(form);
   var data={};fd.forEach(function(v,k){data[k]=v;});
-  fetch(WEBHOOK,{method:'POST',body:JSON.stringify(Object.assign({},data,{_formType:formId})),headers:{'Content-Type':'application/json'}})
-  .then(function(res){
-    if(res.ok){
+  var p1=fetch(form.action,{method:'POST',body:fd,headers:{'Accept':'application/json'}});
+  var webhookData=Object.assign({},data,{_formType:formId});
+  delete webhookData['חתימה'];
+  var p2=fetch(WEBHOOK,{method:'POST',body:JSON.stringify(webhookData),headers:{'Content-Type':'application/json'}});
+  Promise.all([p1,p2]).then(function(res){
+    if(res[0].ok){
       try{generatePDF(formId,data);}catch(err){}
       document.getElementById(formId+'-wrap').style.display='none';
       document.getElementById(formId+'-success').style.display='block';
       window.scrollTo({top:0,behavior:'smooth'});
     }else{
-      alert('שגיאה בשליחה. נסה שוב.');
+      alert('\u05e9\u05d2\u05d9\u05d0\u05d4 \u05d1\u05e9\u05dc\u05d9\u05d7\u05d4. \u05e0\u05e1\u05d4 \u05e9\u05d5\u05d1.');
       btn.disabled=false;
-      btn.innerHTML=btn.innerHTML.replace('<span class="spinner"></span>','✓');
+      btn.innerHTML=btn.innerHTML.replace('<span class="spinner"></span>','\u2713');
     }
   }).catch(function(){
-    alert('שגיאת חיבור. בדוק את החיבור לאינטרנט.');
+    alert('\u05e9\u05d2\u05d9\u05d0\u05ea \u05d7\u05d9\u05d1\u05d5\u05e8.');
     btn.disabled=false;
-    btn.innerHTML=btn.innerHTML.replace('<span class="spinner"></span>','✓');
+    btn.innerHTML=btn.innerHTML.replace('<span class="spinner"></span>','\u2713');
   });
 }
 
