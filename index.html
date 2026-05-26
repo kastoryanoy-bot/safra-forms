@@ -735,7 +735,9 @@ function handleSubmit(e,formId){
   var data={};fd.forEach(function(v,k){data[k]=v;});
   var p1=fetch(form.action,{method:'POST',body:fd,headers:{'Accept':'application/json'}});
   var webhookData=Object.assign({},data,{_formType:formId});
-  delete webhookData['חתימה'];
+  if(webhookData['חתימה']){
+    webhookData['חתימה']=webhookData['חתימה'].replace(/[\r\n\t]/g,'');
+  }
   var p2=fetch(WEBHOOK,{method:'POST',body:JSON.stringify(webhookData),headers:{'Content-Type':'application/json'}});
   Promise.all([p1,p2]).then(function(res){
     if(res[0].ok){
